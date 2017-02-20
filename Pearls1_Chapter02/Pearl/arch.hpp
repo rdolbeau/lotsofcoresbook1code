@@ -681,7 +681,7 @@ inline void rotate_left_wm1(F64vec8 *v0, const F64vec8 v1)
 #endif // KNC
 
 #ifdef AVX3
-#include "micvec.h"
+#include "dvec.h"
 #include "ia32intrin.h"
 
 typedef F64vec8 VREAL_T;
@@ -753,16 +753,6 @@ inline bool all_zero(const __mmask8 &l)
 inline F64vec8 select_true(const __mmask8 &mask, const F64vec8 &iftrue, const F64vec8 &iffalse)
 {
     return _mm512_castsi512_pd(_mm512_mask_or_epi64(_mm512_castpd_si512(iffalse), mask, _mm512_castpd_si512(iftrue), _mm512_castpd_si512(iftrue)));
-}
-
-inline F64vec8 select_gt(const F64vec8 &a, const F64vec8 &b, const F64vec8 &c, const F64vec8 &d)
-{
-    return select_lt(b, a, c, d);
-}
-
-inline F64vec8 select_ge(const F64vec8 &a, const F64vec8 &b, const F64vec8 &c, const F64vec8 &d)
-{
-    return select_le(b, a, c, d);
 }
 
 inline __mmask8 mask_not(const __mmask8 &l)
