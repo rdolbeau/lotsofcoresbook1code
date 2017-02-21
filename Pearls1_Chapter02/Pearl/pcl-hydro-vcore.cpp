@@ -70,9 +70,9 @@ VREAL_T vslope(const VREAL_T nbv_m,      const VREAL_T nbv_0, const VREAL_T nbv_
     const VREAL_T right   = slope_type * (nbv_p - nbv_0);
     const VREAL_T center  = ((VREAL_T) 0.5) * (left + right) * inv_slope_type;
     const VREAL_T sign    = select_gt(center,         (VREAL_T) 0.0, (VREAL_T) 1.0, (VREAL_T) -1.0);
-    const VREAL_T llftrgt = select_le((left * right), (VREAL_T) 0.0, (VREAL_T) 1.0, (VREAL_T) 0.0);
+    const VREAL_T llftrgt = select_le((left * right), (VREAL_T) 0.0, (VREAL_T) 0.0, (VREAL_T) 1.0);
     const VREAL_T t1      = std::min(std::abs(left), std::abs(right));
-    return sign * std::min((((VREAL_T) 1.0) - llftrgt) * t1, std::abs(center));
+    return sign * std::min(llftrgt * t1, std::abs(center));
 }
 
 void vflux(      VREAL_T *restrict flux_rho,                              VREAL_T *restrict flux_u,         VREAL_T *restrict flux_v,         VREAL_T *restrict flux_p,
