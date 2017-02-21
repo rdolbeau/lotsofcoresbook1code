@@ -698,15 +698,7 @@ namespace std
 
     inline F64vec8 abs(const F64vec8 &a)
     {
-        static const union
-        {
-            int i[16];
-            __m512 m;
-        } __i64vec8_abs_mask = { 0xffffffff, 0x7fffffff, 0xffffffff, 0x7fffffff,
-                                 0xffffffff, 0x7fffffff, 0xffffffff, 0x7fffffff,
-                                 0xffffffff, 0x7fffffff, 0xffffffff, 0x7fffffff,
-                                 0xffffffff, 0x7fffffff, 0xffffffff, 0x7fffffff};
-        return _mm512_and_epi32(_mm512_castpd_si512(a), __i64vec8_abs_mask.m);
+	return _mm512_abs_pd(a);
     }
 
     inline F64vec8 max(const F64vec8 &l, const F64vec8 &r)
