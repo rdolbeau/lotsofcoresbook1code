@@ -59,8 +59,8 @@ struct hydro
 
     int nxystep;
 
-    int ystride;
-    int varstride;
+    unsigned long long ystride;
+    unsigned long long varstride;
 
     int     testcase;
     hscheme scheme;

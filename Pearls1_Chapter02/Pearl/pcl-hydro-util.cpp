@@ -46,13 +46,13 @@ void init_hydro(hydro *h)
 
     h->inv_slope_type = 1.0/h->slope_type;
 
-    for(int i = 0; i < h->varstride; ++i)
+    for(unsigned long long i = 0; i < h->varstride; ++i)
         h->q[i + 0*h->varstride] = (REAL_T) 1.0;
-    for(int i = 0; i < h->varstride; ++i)
+    for(unsigned long long i = 0; i < h->varstride; ++i)
         h->q[i + 1*h->varstride] = (REAL_T) 0.0;
-    for(int i = 0; i < h->varstride; ++i)
+    for(unsigned long long i = 0; i < h->varstride; ++i)
         h->q[i + 2*h->varstride] = (REAL_T) 0.0;
-    for(int i = 0; i < h->varstride; ++i)
+    for(unsigned long long i = 0; i < h->varstride; ++i)
         h->q[i + 3*h->varstride] = (REAL_T) 1e-5;
 
     switch(h->testcase)
